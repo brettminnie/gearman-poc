@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "a79b0d2340b19129b142fb519cb75945",
+    "hash": "3720ae58c79743eeb08069b60bfcaa6a",
     "packages": [
         {
             "name": "mwillbanks/mw-gearman",
@@ -51,58 +51,6 @@
                 "zf2"
             ],
             "time": "2013-09-18 17:07:02"
-        },
-        {
-            "name": "zendframework/zenddiagnostics",
-            "version": "v1.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/zendframework/ZendDiagnostics.git",
-                "reference": "5707316caf6eeceeba79fccf08ad63ac5151e6ab"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/ZendDiagnostics/zipball/5707316caf6eeceeba79fccf08ad63ac5151e6ab",
-                "reference": "5707316caf6eeceeba79fccf08ad63ac5151e6ab",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.3"
-            },
-            "require-dev": {
-                "sensiolabs/security-checker": "1.3.*@dev",
-                "symfony/yaml": "v2.3.11",
-                "zendframework/zend-loader": "2.*"
-            },
-            "suggest": {
-                "ext-bcmath": "Required by Check\\CpuPerformance",
-                "sensiolabs/security-checker": "Required by Check\\SecurityAdvisory",
-                "symfony/yaml": "Required by Check\\YamlFile"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "ZendDiagnostics\\": "src/",
-                    "ZendDiagnosticsTest\\": "tests/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "description": "A set of components for performing diagnostic tests in PHP applications",
-            "homepage": "https://github.com/zendframework/ZendDiagnostics",
-            "keywords": [
-                "diagnostics",
-                "php",
-                "test"
-            ],
-            "time": "2014-04-03 07:22:15"
         },
         {
             "name": "zendframework/zendframework",
@@ -264,60 +212,6 @@
                 "zf2"
             ],
             "time": "2014-03-05 22:25:44"
-        },
-        {
-            "name": "zendframework/zftool",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/zendframework/ZFTool.git",
-                "reference": "784d29af4e6d967d268ac5e385f49999f85de96a"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/ZFTool/zipball/784d29af4e6d967d268ac5e385f49999f85de96a",
-                "reference": "784d29af4e6d967d268ac5e385f49999f85de96a",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.3",
-                "zendframework/zend-code": ">=2.2.2",
-                "zendframework/zend-config": ">=2.2.2",
-                "zendframework/zend-console": ">=2.2.2",
-                "zendframework/zend-file": ">=2.2.2",
-                "zendframework/zend-form": ">=2.2.2",
-                "zendframework/zend-http": ">=2.2.2",
-                "zendframework/zend-loader": ">=2.2.2",
-                "zendframework/zend-modulemanager": ">=2.2.2",
-                "zendframework/zend-mvc": ">=2.2.2",
-                "zendframework/zend-serializer": ">=2.2.2",
-                "zendframework/zend-servicemanager": ">=2.2.2",
-                "zendframework/zend-stdlib": ">=2.2.2",
-                "zendframework/zend-text": ">=2.2.2",
-                "zendframework/zend-version": ">=2.2.2",
-                "zendframework/zend-view": ">=2.2.2",
-                "zendframework/zenddiagnostics": ">=1.0.0"
-            },
-            "bin": [
-                "zf.php"
-            ],
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "ZFTool\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "description": "Utility module for Zend Framework 2 applications.",
-            "homepage": "http://framework.zend.com/",
-            "keywords": [
-                "tool",
-                "zf2"
-            ],
-            "time": "2014-03-31 11:52:40"
         }
     ],
     "packages-dev": [
@@ -743,7 +637,6 @@
     ],
     "minimum-stability": "stable",
     "stability-flags": {
-        "zendframework/zftool": 20,
         "mwillbanks/mw-gearman": 20
     },
     "platform": {
