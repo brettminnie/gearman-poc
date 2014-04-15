@@ -15,42 +15,30 @@ class GearmanListener extends ServiceAbstract
      */
     public function addJobToQueue($workload)
     {
-        $gearmanClient = $this->serviceLocator->get('mwGearman\Client\Pecl');
-        $gearmanClient->connect();
+        $gearmanClient = new \GearmanClient();
+        $gearmanClient->addServer();
 
-        $task = new Task();
-        $task
-            ->setBackground(true)
-            ->setFunction('writeJob')
-            ->setWorkload($workload)
-            ->setUnique(crc32($workload));
+        $gearmanClient->doBackground('flimp',$workload);
 
-        return $gearmanClient->doTask($task);
+        $gearmanWorker = new \GearmanWorker();
+        $gearmanWorker->addServer();
+
+        $gearmanWorker->addFunction('flimp', function ($gearmanJob) {
+
+                $logfile = fopen('/tmp/gearman.txt', 'a+');
+
+                if($logfile) {
+                    for($i=0; $i<5; $i++) {
+                        sleep(1);
+                        $logData = sprintf('[%s]: %s %s', date('d-m-Y h:i:s'), $gearmanJob->workload(), PHP_EOL);
+                        fwrite($logfile, $logData);
+                    }
+                }
+            });
+
+        while($gearmanWorker->work());
     }
 
-    /***
-     * @param $jobName
-     */
-    public function retrieveJobFromQueue($jobName)
-    {
-        sleep(10);
-        $gearmanClient = $this->serviceLocator->get('mwGearman\Worker\Pecl');
-        $gearmanClient->register($jobName, 'pushToLog');
-        $gearmanClient->connect();
-
-        while($gearmanClient->work());
-    }
-
-    /**
-     * @param $gearmanJob
-     */
-    public function pushToLog($gearmanJob)
-    {
-        $logfile = fopen('/tmp/gearman.txt', 'a+');
-
-        if($logfile) {
-            $logData = sprintf('[%s]: %s %s', date('d-m-Y h:i'), $gearmanJob->workload(), PHP_EOL);
-            fwrite($logfile, $logData);
-        }
-    }
 }
+
+

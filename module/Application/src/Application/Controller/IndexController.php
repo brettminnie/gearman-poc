@@ -26,11 +26,8 @@ class IndexController extends AbstractActionController
         $this
             ->serviceLocator
             ->get('GearmanListener')
-            ->addJobToQueue($data['workload']);
+            ->addJobToQueue($data[1]);
 
-        $this
-            ->serviceLocator
-            ->get('GearmanListener')
-            ->retrieveJobFromQueue('writeJob');
+        return new ViewModel();
     }
 }

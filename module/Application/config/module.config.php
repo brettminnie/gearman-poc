@@ -96,6 +96,15 @@ return array(
     'console' => array(
         'router' => array(
             'routes' => array(
+                'gearman-test-route' => array(
+                    'options'   => array(
+                        'route'    => 'gearman <workload>',
+                        'defaults' => array(
+                            'controller' => 'Application\Controller\Index',
+                            'action'     => 'testGearMan'
+                        )
+                    )
+                )
             ),
         ),
     ),

@@ -10,6 +10,7 @@
 namespace Application;
 
 use Application\Service\GearmanListener;
+use mwGearman\Client\Pecl;
 use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
 
@@ -44,8 +45,18 @@ class Module
             'factories' => array(
                 'GearmanListener' => function ($sm) {
                         return new GearmanListener();
+                    }/*,
+                'mwGearman\Client\Pecl' => function($sm) {
+                        $object = new Pecl();
+                        $object->addServer('localhost');
+                        return $object;
                     },
-            ),
+                'mwGearman\Worker\Pecl' => function($sm) {
+                        $object = new \mwGearman\Worker\Pecl();
+                        $object->addServer('localhost');
+                        return $object;
+                    }*/
+            )/*,
             'di'        => array(
                 'instance' => array(
                     'mwGearman\Client\Pecl' => array(
@@ -63,7 +74,7 @@ class Module
                         ),
                     ),
                 )
-            )
+            )*/
         );
     }
 }
