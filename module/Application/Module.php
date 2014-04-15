@@ -9,6 +9,7 @@
 
 namespace Application;
 
+use Application\Service\GearmanListener;
 use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
 
@@ -34,6 +35,17 @@ class Module
                     __NAMESPACE__ => __DIR__ . '/src/' . __NAMESPACE__,
                 ),
             ),
+        );
+    }
+
+    public function getServiceConfig()
+    {
+        return array(
+            'factories' => array(
+                'GearmanListener' => function ($sm) {
+                    return new GearmanListener();
+                },
+            )
         );
     }
 }
