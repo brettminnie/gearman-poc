@@ -18,7 +18,7 @@ class GearmanListener extends ServiceAbstract
         $gearmanClient = new \GearmanClient();
         $gearmanClient->addServer();
 
-        $gearmanClient->doBackground('flimp',$workload);
+        $handle = $gearmanClient->doBackground('flimp',$workload);
 
         $gearmanWorker = new \GearmanWorker();
         $gearmanWorker->addServer();
@@ -36,7 +36,7 @@ class GearmanListener extends ServiceAbstract
                 }
             });
 
-        while($gearmanWorker->work());
+        while($gearmanWorker->work() && $gearmanClient->jobStatus($handle)[0]);
     }
 
 }
