@@ -33,8 +33,9 @@ class GearmanListener extends ServiceAbstract
      */
     public function retrieveJobFromQueue($jobName)
     {
+        sleep(10);
         $gearmanClient = $this->serviceLocator->get('mwGearman\Worker\Pecl');
-        $gearmanClient->register('writeJob', 'pushToLog');
+        $gearmanClient->register($jobName, 'pushToLog');
         $gearmanClient->connect();
 
         while($gearmanClient->work());

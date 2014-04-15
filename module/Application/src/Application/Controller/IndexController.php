@@ -18,4 +18,19 @@ class IndexController extends AbstractActionController
     {
         return new ViewModel();
     }
+
+    public function testGearManAction()
+    {
+        $data = $this->getRequest()->getContent();
+
+        $this
+            ->serviceLocator
+            ->get('GearmanListener')
+            ->addJobToQueue($data['workload']);
+
+        $this
+            ->serviceLocator
+            ->get('GearmanListener')
+            ->retrieveJobFromQueue('writeJob');
+    }
 }
