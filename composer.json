@@ -1,0 +1,21 @@
+{
+    "name": "brettminnie/gearman-poc",
+    "description": "Gearman ZF2 integration",
+    "license" : [ "MIT" ],
+    "authors": [
+        {
+            "name": "Brett Minnie",
+            "email": "brett@bdb-studios.co.uk",
+            "homepage": "http://bdb-studios.co.uk"
+        }
+    ],
+    "require": {
+        "php": ">=5.4",
+    	"zendframework/zendframework" : "2.2.*",
+    	"zendframework/zftool" : "dev-master",
+		"mwillbanks/mw-gearman": "dev-master"	
+    },
+	"require-dev" : {
+	    "phpunit/phpunit" : "3.7.*"
+    }
+}
