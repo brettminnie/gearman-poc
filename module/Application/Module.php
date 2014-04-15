@@ -43,8 +43,26 @@ class Module
         return array(
             'factories' => array(
                 'GearmanListener' => function ($sm) {
-                    return new GearmanListener();
-                },
+                        return new GearmanListener();
+                    },
+            ),
+            'di'        => array(
+                'instance' => array(
+                    'mwGearman\Client\Pecl' => array(
+                        'parameters' => array(
+                            'servers' => array(
+                                array('localhost'),
+                            ),
+                        ),
+                    ),
+                    'mwGearman\Worker\Pecl' => array(
+                        'parameters' => array(
+                            'servers' => array(
+                                array('localhost'),
+                            ),
+                        ),
+                    ),
+                )
             )
         );
     }
