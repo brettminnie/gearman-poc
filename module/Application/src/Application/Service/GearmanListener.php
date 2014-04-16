@@ -3,9 +3,6 @@
 
 namespace Application\Service;
 
-
-use mwGearman\Task\Task;
-
 class GearmanListener extends ServiceAbstract
 {
 
@@ -18,7 +15,7 @@ class GearmanListener extends ServiceAbstract
         $gearmanClient = new \GearmanClient();
         $gearmanClient->addServer();
 
-        $handle = $gearmanClient->doBackground($jobName,$workload);
+        $handle = $gearmanClient->doBackground($jobName, $workload);
 
 
     }
@@ -31,22 +28,27 @@ class GearmanListener extends ServiceAbstract
         $gearmanWorker = new \GearmanWorker();
         $gearmanWorker->addServer();
 
-        $gearmanWorker->addFunction($jobName, function ($gearmanJob) {
+        $gearmanWorker->addFunction(
+            $jobName,
+            function ($gearmanJob) {
 
                 $logfile = fopen('/tmp/gearman.txt', 'a+');
 
-                if($logfile) {
-                    echo PHP_EOL . PHP_EOL;
-                    for($i=0; $i<5; $i++) {
+                if ($logfile) {
+                    echo date('d-m-Y h:i:s') . ': Data found, processing...' . PHP_EOL;
+                    for ($i = 0; $i < 5; $i++) {
                         sleep(1);
                         $logData = sprintf('[%s]: %s %s', date('d-m-Y h:i:s'), $gearmanJob->workload(), PHP_EOL);
                         fwrite($logfile, $logData);
                     }
                 }
-            });
+            }
+        );
 
-        while($gearmanWorker->work()){
-
+        while ($gearmanWorker->work()) {
+            if (GEARMAN_SUCCESS != $gearmanWorker->returnCode()) {
+                echo "Worker failed: " . $gearmanWorker->error() . PHP_EOL;
+            }
         }
     }
 
