@@ -9,3 +9,11 @@ Install the gearman extension
 Restart apache
 
 
+To test the functionality here we have 2 console routes
+
+`php public/index.php gearman <string>` to queue a test string to get written to a log file 5 times
+
+`php public/index.php gearman-worker` to run the worker
+
+The output is written to /tmp/gearman.txt
+
