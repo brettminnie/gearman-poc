@@ -45,36 +45,8 @@ class Module
             'factories' => array(
                 'GearmanListener' => function ($sm) {
                         return new GearmanListener();
-                    }/*,
-                'mwGearman\Client\Pecl' => function($sm) {
-                        $object = new Pecl();
-                        $object->addServer('localhost');
-                        return $object;
-                    },
-                'mwGearman\Worker\Pecl' => function($sm) {
-                        $object = new \mwGearman\Worker\Pecl();
-                        $object->addServer('localhost');
-                        return $object;
-                    }*/
-            )/*,
-            'di'        => array(
-                'instance' => array(
-                    'mwGearman\Client\Pecl' => array(
-                        'parameters' => array(
-                            'servers' => array(
-                                array('localhost'),
-                            ),
-                        ),
-                    ),
-                    'mwGearman\Worker\Pecl' => array(
-                        'parameters' => array(
-                            'servers' => array(
-                                array('localhost'),
-                            ),
-                        ),
-                    ),
-                )
-            )*/
+                    }
+            )
         );
     }
 }
