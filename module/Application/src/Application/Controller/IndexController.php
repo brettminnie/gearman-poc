@@ -14,6 +14,8 @@ use Zend\View\Model\ViewModel;
 
 class IndexController extends AbstractActionController
 {
+    const JOBNAME = 'testJob';
+
     public function indexAction()
     {
         return new ViewModel();
@@ -26,7 +28,17 @@ class IndexController extends AbstractActionController
         $this
             ->serviceLocator
             ->get('GearmanListener')
-            ->addJobToQueue($data[1]);
+            ->addJobToQueue($data[1], self::JOBNAME);
+
+        return new ViewModel();
+    }
+
+    public function testGearManWorkerAction()
+    {
+        $this
+            ->serviceLocator
+            ->get('GearmanListener')
+            ->writeToLog(self::JOBNAME);
 
         return new ViewModel();
     }

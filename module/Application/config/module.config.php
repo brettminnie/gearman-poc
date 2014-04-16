@@ -104,6 +104,15 @@ return array(
                             'action'     => 'testGearMan'
                         )
                     )
+                ),
+                'gearman-worker-route' => array(
+                    'options'   => array(
+                        'route'    => 'gearman-worker',
+                        'defaults' => array(
+                            'controller' => 'Application\Controller\Index',
+                            'action'     => 'testGearManWorker'
+                        )
+                    )
                 )
             ),
         ),
